@@ -1,28 +1,39 @@
-# Calendar-Time Maternal Genealogies
+# Maternal Genealogies — Bilingual research library
 
-**An accessible entry point to a mathematical research preprint and its complete technical documentation.**
+**Calendar-time maternal genealogies, common ancestors, and cohort dispersion.** This repository publishes two readable research articles, their detailed mathematical proofs, and the full technical M0–M6c programme.
 
-The project investigates how different maternal ages and shared maternal ancestors affect the number of generations separating contemporary individuals from a past calendar date.
+## Choose your language
 
-## Read the research
+| Français | English |
+|---|---|
+| [**Lire l'article accessible en français**](./article-fr.html) | [**Read the accessible English article**](./article-en.html) |
+| [**Télécharger le PDF français**](./article-fr.pdf) | [**Download the English PDF**](./article-en.pdf) |
 
-- **[Research article — PDF (24 pages)](./manuscript_v0_6.pdf)**
-- **[Complete mathematical proof volume — PDF (1,406 pages)](./VOLUME_M0_M6C_ACCES_AUX_PREUVES.pdf)**
-- **[Public research website](https://leomarquet14-star.github.io/maternal-genealogies/)** (available when GitHub Pages is enabled)
+**[Open the research website](https://leomarquet14-star.github.io/maternal-genealogies/)**
 
-## What the model studies
+## Two levels of mathematical verification
 
-- Calendar-time maternal generation depth and renewal processes.
-- First shared maternal ancestors and the coalescence of lineages.
-- Mathematical implications for expected cohort-level generational dispersion.
-- A technical calibration framework (M0–M6c).
+- **[Complete 24-page proof manuscript (V0.6)](./manuscript_v0_6.pdf)** — proof statements, detailed derivations, quantitative bounds and references specific to the reader articles.
+- **[1,406-page M0–M6c technical corpus](./VOLUME_M0_M6C_ACCES_AUX_PREUVES.pdf)** — expanded theoretical programme, additional models, background constructions and documented limitations.
 
-## Scientific scope
+The longer M0–M6c corpus is *not* falsely described as a substitute for the 24-page paper's proofs. The two readable articles point readers to the original V0.6 theorem numbers and exact source pages.
 
-This repository distributes a **working research preprint**, not a peer-reviewed journal article. Quantitative illustrations are consequences of explicitly specified mathematical models, **not estimates for historical human populations**. Certain general extensions remain conditional and are not presented as fully established.
+## What the mathematical results mean
 
-The article is intended as the introductory route into the longer technical volume. Read the introduction first; consult the relevant sections of the technical volume for hypotheses, constructions, and complete arguments.
+The work studies why two contemporaries may have different maternal-generation depths to the same calendar date, and why sharing maternal ancestors changes the joint structure of those depths. In a specifically defined homogeneous model, a shared-ancestor mechanism reduces the theoretical expected mean pairwise disparity coefficient by approximately **13%** for one illustrative parameter choice, compared with an independent-renewal benchmark.
 
-## Website
+**Not a measurement about human history.** The 13% is neither universal nor a historically calibrated effect. The article does not determine an exact world maximum depth gap, nor a human range in thousands of years.
 
-The website is generated from [`index.html`](./index.html) using GitHub Pages. It does not use tracking scripts, an external JavaScript framework, or any hosting service beyond GitHub Pages.
+## Scientific status
+
+This is a **working mathematical preprint**, not a peer-reviewed article. The broad historical M4–M5 dense–sparse programme and its calibration are not claimed to be fully proved or empirically validated. Publication novelty has not been externally certified.
+
+## Publishing and reproducibility
+
+- `index.html`: public bilingual landing page.
+- `article-fr.html`, `article-en.html`: accessible full reader articles.
+- `articles.css`: shared on-screen and print stylesheet.
+- `.github/workflows/build-reader-pdfs.yml`: regenerates the corresponding PDF articles on GitHub Actions after article changes.
+- `sitemap.xml`: indexable web entry points for Google Search Console.
+
+A reader can also print either HTML article to PDF directly from their browser.
