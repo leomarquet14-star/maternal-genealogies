@@ -11,6 +11,18 @@
 
 **[Open the research website](https://leomarquet14-star.github.io/maternal-genealogies/)**
 
+## Complete proof library — access in both languages
+
+**[Bibliothèque de preuves (FR)](./preuves-fr.html)** · **[Complete proof library (EN)](./proofs-en.html)**
+
+Both routes provide direct access to the **full 1,406-page M0–M6c volume** and chapter-level page links for M0, M1, M2, M3, M4, M5 and M6a–M6c. They also link to the specific proofs in the 24-page V0.6 mathematical paper.
+
+- [**Complete M0–M6c technical volume (PDF, 1,406 pages)**](./VOLUME_M0_M6C_ACCES_AUX_PREUVES.pdf)
+- [**V0.6 technical proof manuscript (PDF, 24 pages)**](./manuscript_v0_6.pdf)
+- [Printable French proof navigation guide](./preuves-fr.pdf) · [Printable English proof navigation guide](./proofs-en.pdf)
+
+**Source-language notice:** the full M0–M6c volume is predominantly in French; the V0.6-specific 24-page proof paper is in English. The navigation guides and reader-facing articles are bilingual. Neither original proof document has been misrepresented as a complete translation into its other language.
+
 ## Two levels of mathematical verification
 
 - **[Complete 24-page proof manuscript (V0.6)](./manuscript_v0_6.pdf)** — proof statements, detailed derivations, quantitative bounds and references specific to the reader articles.
