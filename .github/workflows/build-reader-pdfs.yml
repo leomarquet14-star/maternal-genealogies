@@ -6,6 +6,8 @@ on:
       - "article-fr.html"
       - "article-en.html"
       - "articles.css"
+      - "preuves-fr.html"
+      - "proofs-en.html"
       - ".github/workflows/build-reader-pdfs.yml"
   workflow_dispatch:
 
@@ -29,9 +31,9 @@ jobs:
           python - <<'PY'
           from pathlib import Path
           from weasyprint import HTML
-          for lang in ("fr", "en"):
-              src = Path(f"article-{lang}.html").resolve()
-              dst = Path(f"article-{lang}.pdf")
+          for name in ("article-fr", "article-en", "preuves-fr", "proofs-en"):
+              src = Path(f"{name}.html").resolve()
+              dst = Path(f"{name}.pdf")
               HTML(filename=str(src), base_url=str(src.parent)).write_pdf(str(dst))
               if dst.stat().st_size < 15000:
                   raise RuntimeError(f"Suspiciously small PDF: {dst}")
@@ -41,7 +43,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add article-fr.pdf article-en.pdf
+          git add article-fr.pdf article-en.pdf preuves-fr.pdf proofs-en.pdf
           if ! git diff --cached --quiet; then
             git commit -m "Generate bilingual reader PDFs"
             git push
