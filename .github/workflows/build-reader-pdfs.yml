@@ -11,6 +11,10 @@ on:
       - ".github/workflows/build-reader-pdfs.yml"
   workflow_dispatch:
 
+concurrency:
+  group: bilingual-reader-pdf-generation
+  cancel-in-progress: true
+
 permissions:
   contents: write
 
@@ -46,5 +50,14 @@ jobs:
           git add article-fr.pdf article-en.pdf preuves-fr.pdf proofs-en.pdf
           if ! git diff --cached --quiet; then
             git commit -m "Generate bilingual reader PDFs"
-            git push
+            for attempt in 1 2 3 4 5; do
+              git fetch origin main
+              git rebase origin/main
+              if git push origin HEAD:main; then
+                exit 0
+              fi
+              sleep 3
+            done
+            echo "Failed to publish generated PDFs after retries" >&2
+            exit 1
           fi
