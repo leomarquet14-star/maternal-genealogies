@@ -1,0 +1,48 @@
+name: Build bilingual reader PDFs
+on:
+  push:
+    branches: [main]
+    paths:
+      - "article-fr.html"
+      - "article-en.html"
+      - "articles.css"
+      - ".github/workflows/build-reader-pdfs.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out project
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install renderer
+        run: python -m pip install --disable-pip-version-check weasyprint
+      - name: Render HTML articles as PDFs
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from weasyprint import HTML
+          for lang in ("fr", "en"):
+              src = Path(f"article-{lang}.html").resolve()
+              dst = Path(f"article-{lang}.pdf")
+              HTML(filename=str(src), base_url=str(src.parent)).write_pdf(str(dst))
+              if dst.stat().st_size < 15000:
+                  raise RuntimeError(f"Suspiciously small PDF: {dst}")
+              print(f"{dst}: {dst.stat().st_size} bytes")
+          PY
+      - name: Publish generated PDFs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add article-fr.pdf article-en.pdf
+          if ! git diff --cached --quiet; then
+            git commit -m "Generate bilingual reader PDFs"
+            git push
+          fi
